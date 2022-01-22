@@ -5,95 +5,67 @@ summary: Listing all websites under 1MB in total size
 ---
 
 <header>
-    <div class="referral">
-        <p><a target="_blank" href="https://thrifty.name">ThriftyName</a> - Get a Brand Name for $5.</p>
-    </div>
     <h1>1MB Club</h1>
-    <p>The internet has become a <em>bloated mess</em>. Massive javascript libraries. Countless client-side queries. Overly complex frontend frameworks.</p>
+    <p>The internet has become a <em>bloated mess</em>. Massive JavaScript libraries. Countless client-side queries. Overly complex frontend frameworks.</p>
     <p>These things are a <strong>cancerous growth</strong> on the web.</p>
-    <p>But we can make a difference - no matter how small it may seem. <em>1MB Club</em> is a growing collection of performance-focused web pages found across the internet. The one and only rule for a web page to qualify as a member:</p>
+    <p>But we can make a difference - no matter how small it may seem. <em>1MB Club</em> is a growing collection of performance-focused web pages found across the internet.</p>
+    <p><strong>The two rules for a web page to qualify as a member:</strong></p>
     <ol>
-        <li>Total website size (not <i>just</i> transfered data) must not exceed 1 megabyte</li>
+        <li>Total website size (not <i>just</i> transferred data) must not exceed 1 megabyte</li>
+        <li>The website must contain a reasonable amount of content / usefulness in order to be added - no sites with a simple line of text, etc.</li>
     </ol>
-    <blockquote>
-        <h3>How to Submit</h3>
+    <hr>
+    <details>
+        <summary><strong>How can I submit a website?</strong></summary>
         <p>Please follow the instructions on the main <a target="_blank" href="https://github.com/bradleytaunt/1mb-club">Github project repo</a>.</p>
-    </blockquote>
-    <span>Jump to: &nbsp;</span>
-    <a href="#50">&#60;50KB</a><span>&nbsp;&nbsp;&middot;&nbsp;</span>
-    <a href="#100">&#60;100KB</a><span>&nbsp;&nbsp;&middot;&nbsp;</span>
-    <a href="#250">&#60;250KB</a><span>&nbsp;&nbsp;&middot;&nbsp;</span>
-    <a href="#512">&#60;512KB</a><span>&nbsp;&nbsp;&middot;&nbsp;</span>
-    <a href="#700">&#60;700KB</a><span>&nbsp;&nbsp;&middot;&nbsp;</span>
-    <a href="#1000"><em>Just Under</em> 1MB</a>
+    </details>
+    <hr>
+    <details>
+        <summary><strong>How can I help support this project?</strong></summary>
+        <p>If you are feeling generous, I would greatly appreciate <a href="https://en.liberapay.com/uglyduck/">any donations to help support the site.</a></p>
+    </details>
+    <hr>
+    <details>
+        <summary><strong>Why is the members list randomized?</strong></summary>
+        <p>This gives visitors the ability to see interesting and new websites everytime they visit! It also prevents odd instances of "racing to the top".</p>
+    </details>
+    <hr>
+    <details>
+        <summary><strong>Looking for a <i>more extreme</i> club?</strong></summary>
+        <p>Take a look and checkout the even more exclusive membership collection at the <a href="https://xhtml.club">XHTML Club</a>.</p>
+    </details>
+    <hr>
+    <br>
 </header>
 
 <main>
-    <ul>
-    {% assign site_items = site.site_listings | sort: 'size' %}
-    <h3 id="50"><50KB</h3>
-    {% for item in site_items %}
-        {% if item.size <= 50 %}
-            <li>
-                <span class="before" style="--data-size:{{ item.size }};"></span>
-                <span class="after">{{ item.size }} KB</span>
-                <a href="https://{{ item.pageurl }}">{{ item.pageurl }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
-
-    <h3 id="100"><100KB</h3>
-    {% for item in site_items %}
-        {% if item.size >= 50 and item.size <=100 %}
-            <li>
-                <span class="before" style="--data-size:{{ item.size }};"></span>
-                <span class="after">{{ item.size }} KB</span>
-                <a href="https://{{ item.pageurl }}">{{ item.pageurl }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
-
-    <h3 id="250"><250KB</h3>
-    {% for item in site_items %}
-        {% if item.size >= 100 and item.size <=250 %}
-            <li>
-                <span class="before" style="--data-size:{{ item.size }};"></span>
-                <span class="after">{{ item.size }} KB</span>
-                <a href="https://{{ item.pageurl }}">{{ item.pageurl }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
-
-    <h3 id="512"><512KB</h3>
-    {% for item in site_items %}
-        {% if item.size >= 250 and item.size <=512 %}
-            <li>
-                <span class="before" style="--data-size:{{ item.size }};"></span>
-                <span class="after">{{ item.size }} KB</span>
-                <a href="https://{{ item.pageurl }}">{{ item.pageurl }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
-
-    <h3 id="700"><700KB</h3>
-    {% for item in site_items %}
-        {% if item.size >= 512 and item.size <=700 %}
-            <li>
-                <span class="before" style="--data-size:{{ item.size }};"></span>
-                <span class="after">{{ item.size }} KB</span>
-                <a href="https://{{ item.pageurl }}">{{ item.pageurl }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
-
-    <h3 id="1000"><em>Just Under</em> 1MB</h3>
-    {% for item in site_items %}
-        {% if item.size >= 700 and item.size <=1000 %}
-            <li>
-                <span class="before" style="--data-size:{{ item.size }};"></span>
-                <span class="after">{{ item.size }} KB</span>
-                <a href="https://{{ item.pageurl }}">{{ item.pageurl }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
+    <h2>Official Members</h2>
+    <hr><br>
+    <table>
+        <thead align="left">
+            <tr>
+                <th>URL</th>
+                <th align="right">Size (KB)</th>
+            </tr>
+        </thead>
+        <tbody id="container">
+        {% assign websites = site.site_listings %}
+        {% for item in websites %}
+            <tr>
+                <td><a target="_blank" href="https://{{ item.pageurl }}">{{ item.pageurl }}</a></td>
+                <td align="right"><span>{{ item.size }}</span></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
 </main>
+<br>
+<hr>
+<script>
+    const container = document.querySelector('#container');
+    const children = [...container.children];
+    children.forEach(child => child.remove());
+    const randomChildren = children.map((child) => ({ child, rand: Math.random() }));
+    randomChildren.sort((a, b) => b.rand - a.rand);
+    randomChildren.forEach(randomObj => container.appendChild(randomObj.child));
+</script>
